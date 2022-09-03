@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-    'research-dna',
-    'root',
-    '',
+    'research-dna',   //DATABASE
+    'root',          // Name of the User
+    '',             // Password
     {
-        host: 'localhost',
+        host: 'localhost', //user Address
         dialect: 'mysql'
     }
 );

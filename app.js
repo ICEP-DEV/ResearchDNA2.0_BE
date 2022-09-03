@@ -6,21 +6,21 @@ const cors = require('cors');
 
 const app = express();
 
-//2 REQUIRE ROUTES (WHICH WE DO NOT HAVE YET)
+// REQUIRE ROUTES (WHICH WE DO NOT HAVE YET)
 
-const signupRoute = require('./routes/signupRoute');
+const loginRoute = require('./routes/loginRoute');
 
 
 
-//3 APP.USE MIDDLEWARE
+// APP.USE MIDDLEWARE
 app.use(express.json());
 app.use(cors());
 app.options('*', cors());
 
 
-//4 CREATE API URL
+// CREATE API URL
 
-app.use('/api/signup', signupRoute);
+app.use('/api/login', loginRoute);
 
 
 
