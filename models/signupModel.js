@@ -6,6 +6,7 @@ const Signup = sequelize.define('signup',{
     
         primaryKey: true,
         allowNull: false,
+       
     },
 
     firstName:{
@@ -20,6 +21,7 @@ const Signup = sequelize.define('signup',{
     email:{
         type: Sequelize.STRING,
         allowNull: false,
+        
     },
     password:{
         type: Sequelize.STRING,
