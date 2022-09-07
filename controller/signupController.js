@@ -1,6 +1,7 @@
 //CRUD - Create, Read, Update Delete
 const SignupModel = require('../models/signupModel');
 const catchAsync = require('../utils/catchAsync');
+const User = SignupModel.user
 
 exports.createSignup = catchAsync(async (req, res, next) => {
     const signup = await SignupModel.create(req.body);
@@ -13,7 +14,10 @@ exports.createSignup = catchAsync(async (req, res, next) => {
     signup
   });
 });
-
 exports.getSignup = catchAsync(async(req, res, next)=>{
-    const signup  = await SignupModel.findAll()
+  const signup  = await SignupModel.findAll()
 })
+
+
+
+
