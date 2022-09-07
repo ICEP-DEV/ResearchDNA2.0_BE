@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-    'research-dna',
+    'research_dna',
     'root',
     '',
     {
