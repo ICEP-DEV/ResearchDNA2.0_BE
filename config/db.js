@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-    'research-dna',   //DATABASE
+    'research_dna',   //DATABASE
     'root',          // Name of the User
     '',             // Password
     {

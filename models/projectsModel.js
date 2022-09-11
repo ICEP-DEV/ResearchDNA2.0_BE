@@ -1,7 +1,7 @@
 
 const Sequelize = require('sequelize');
 const sequelize = require('../config/db');
-const Signup = sequelize.define('signup',{
+const Projects = sequelize.define('projects',{
     userId:{
         type: Sequelize.INTEGER,
     
@@ -10,26 +10,21 @@ const Signup = sequelize.define('signup',{
        
     },
 
-    firstName:{
+    UserName:{
         type: Sequelize.STRING,
         allowNull: false,
     },
     
-    lastName:{
+    Code:{
         type: Sequelize.STRING,
         allowNull: false,
     },
-    email:{
+    Description:{
         type: Sequelize.STRING,
         allowNull: false,
         
-    },
-    password:{
-        type: Sequelize.STRING,
-        allowNull: false,
     }
-
     
 } );
 
-module.exports = Signup;
+module.exports = Projects;

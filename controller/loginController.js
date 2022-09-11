@@ -1,19 +1,52 @@
 //CRUD - Create, Read, Update Delete
-const loginModel = require('../models/loginModel');
+const express = require('express');
+const LoginModel = require('../models/signupModel');
 const catchAsync = require('../utils/catchAsync');
+//const jwt= require("jsonwebtoken")
 
-exports.createlogin = catchAsync(async (req, res, next) => {
-    const login = await loginModel.create(req.body);
+const router =express.Router();
 
- // user LOGIN
+exports.compareLogin = catchAsync(async (req, res, next) => {
 
-  res.status(200).json({
-    status: "success",
-    message: "user login Successful",
-    login
-  });
+    const {userId,password}=req.body;
+
+    const userWithId = await LoginModel.findOne({where: { userId}}).catch((err) =>{
+        console.log("Error: ",err);
+    });
+    //LoginModel.query(userWithId, function(err, result) {
+
+    if(!userWithId)
+    return res.json({message: "Student number or password does not match!"})
+ 
+    if(userWithId.password !==password)
+    return res.json({message: "Student number or password does not match!"})
+    else{
+        return res.json({message: "Login was succeful!"})
+       /* Object.keys(result).forEach(function(key) {
+            var row = result[key];
+            const userSession = {
+                
+                userId: row.id,
+                firstname: row.name,
+                lastname: row.surname,
+                email: row.email,
+                password: row.password
+            }
+            req.session.user = userSession;
+            //code to display on postman
+            return res.status(200).send("Log in was succeful!\n" + JSON.stringify(req.session));
+
+        })*/
+    }
+//});
+
+    
+    //const jwtToken= jwt.sign({email: userWithId.email, userId: userWithId.userId},process.env.JWT_SECRET);
+    
+   // res.json({message: "Welcome Back!", token: jwtToken});
+    
 });
 
-exports.getSignup = catchAsync(async(req, res, next)=>{
-    const login  = await loginModel.findAll()
+exports.getLogin = catchAsync(async(req, res, next)=>{
+    const login  = await SignupModel.findOne()
 })

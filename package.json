@@ -19,5 +19,13 @@
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.19",
     "sequelize": "^6.21.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ICEP-DEV/ResearchDNA2.0_BE.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ICEP-DEV/ResearchDNA2.0_BE/issues"
+  },
+  "homepage": "https://github.com/ICEP-DEV/ResearchDNA2.0_BE#readme"
 }
