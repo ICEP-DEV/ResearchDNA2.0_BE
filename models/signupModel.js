@@ -23,6 +23,16 @@ const Signup = sequelize.define('signup',{
         allowNull: false,
         
     },
+    department:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        
+    },
+     faculty:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        
+    },
     password:{
         type: Sequelize.STRING,
         allowNull: false,
