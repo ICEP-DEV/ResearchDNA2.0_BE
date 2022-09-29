@@ -14,7 +14,8 @@ const signupRoute = require('./routes/signupRoute');
 const loginRoute = require('./routes/loginRoute');
 const getUserRoute = require('./routes/getUserRoute');
 const updateUserRoute = require('./routes/updateUserRoute');
-const projectsRoute = require('./routes/projectsRoute');
+const projectRoute = require('./routes/projectRoute');
+const projectStatusRoute = require('./routes/projectStatuesRoute');
 
 
 
@@ -42,7 +43,9 @@ app.use('/api/signup', signupRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/user', getUserRoute);
 app.use('/api/update', updateUserRoute);
-app.use('/api/userprojects', projectsRoute);
+app.use('/api/projects', projectRoute);
+app.use('/api/project-status', projectStatusRoute);
+
 
 
 
