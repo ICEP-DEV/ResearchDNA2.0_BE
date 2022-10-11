@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/db');
-const Signup = sequelize.define('signup',{
+const Signup = sequelize.define('user',{
     userId:{
         type: Sequelize.INTEGER,
     
