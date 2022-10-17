@@ -1,11 +1,14 @@
-const app = require('./app'); //Since we have created our app module we can require the module
-const dotenv = require('dotenv'); //For Reading .env File  - This file is going to be important in the futur when are going to host our database
-const {Sequelize} = require('sequelize');
-dotenv.config({ path: './.env'});
-const sequelize = require('./config/db');
+const app = require('./app')
+const dotenv = require('dotenv');
+const {Sequelize} = require('sequelize')
+dotenv.config({ path: './.env' });
+const sequelize = require('./config/db')
 
-sequelize.sync();
+
+sequelize.sync()
+
+
 const port = process.env.PORT || 3000;
-app.listen(port, ()=>{
-    console.log(`Application running on port ${port}`);
-});
+app.listen(port,()=>{
+    console.log(`Application is running on port ${port}`)
+})
