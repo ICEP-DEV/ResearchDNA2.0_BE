@@ -17,7 +17,8 @@ const feedbackRoute = require('./routes/feedbackRoute');
 const userRoute = require('./routes/userRoute');  
 const loginRoute = require('./routes/loginRoute');
 const toolsRoute = require('./routes/toolsRoute'); 
-const docToolsRoute = require('./routes/docToolsRoute');                   
+const docToolsRoute = require('./routes/docToolsRoute');   
+const projectRoute = require('./routes/projectRoute');
 
 //3 APP.USE MIDDLEWARE
 app.use(express.json());
@@ -45,6 +46,7 @@ app.use('/api/user', userRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/tools', toolsRoute);
 app.use('/api/docTools', docToolsRoute);
+app.use('/api/project', projectRoute);
 
 //static videos folder
 app.use('/files',express.static('./files'))
