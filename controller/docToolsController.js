@@ -2,7 +2,9 @@
 const DocToolsModel = require('../models/docToolsModel');
 const catchAsync = require('../utils/catchAsync');
 const multer = require('multer')
-const path = require('path')
+const path = require('path');
+const Supervisor = require('../models/supervisorModel');
+const User = require('../models/userModel');
 
 //CREATE Tools
 exports.createDocTools = catchAsync(async(req, res, next)=>{
@@ -24,7 +26,18 @@ exports.createDocTools = catchAsync(async(req, res, next)=>{
 
 
 exports.getAllDocTools = catchAsync(async(req, res, next)=>{
-    const docTools  = await DocToolsModel.findAll()
+    const docTools  = await DocToolsModel.findAll({
+        include: [
+            {
+              model: User,
+              attributes: { exclude: ["updatedAt", "createdAt", "password"] },
+            },
+            {
+                model: Supervisor,
+                attributes: { exclude: ["updatedAt", "createdAt", "password"] },
+              },
+        ],
+    });
     res.status(200).send(docTools )
 })
 

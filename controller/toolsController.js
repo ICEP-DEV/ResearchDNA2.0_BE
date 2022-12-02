@@ -9,7 +9,7 @@ exports.createTools = catchAsync(async(req, res, next)=>{
 
     let info = {
         video: req.file.path
-       
+        
         
     }
   console.log(info)
@@ -17,7 +17,7 @@ exports.createTools = catchAsync(async(req, res, next)=>{
     //INSERT INTO [tablename] VALUES...
     res.status(200).json({
         status:"success",
-        message: "Video Created Successfully",
+        message: "tools Created Successfully",
         tools
     })
 });
@@ -53,7 +53,7 @@ exports.deleteTools  = catchAsync(async (req, res, next) => {
 
 })
 
-// 8. Upload Video Controller
+// 8. Upload video Controller
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -68,7 +68,7 @@ exports.upload = multer({
     storage: storage,
     limits: { fileSize: '100000000' },
     fileFilter: (req, file, cb) => {
-        const fileTypes = /mp4|mov|avi|gif/
+        const fileTypes = /jpeg|jpg|png|gif/
         const mimeType = fileTypes.test(file.mimetype)  
         const extname = fileTypes.test(path.extname(file.originalname))
 
@@ -78,3 +78,4 @@ exports.upload = multer({
         cb('Give proper files formate to upload')
     }
 }).single('video')
+

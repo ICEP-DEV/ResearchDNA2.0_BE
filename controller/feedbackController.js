@@ -23,7 +23,10 @@ exports.getFeedback = catchAsync(async (req, res, next) => {
 
     const id = req.params.id
     const feedback= await FeedbackModel.findOne({where: {id: id}})
+    if(!feedback)
+    return res.json({message: "Document does not exit"})
     res.status(200).send(feedback)
+    
 
 })
 exports.updateFeedback = catchAsync(async (req, res, next) => {

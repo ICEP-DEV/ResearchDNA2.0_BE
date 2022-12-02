@@ -2,7 +2,6 @@
 const ProjectModel = require('../models/projectModel');
 const catchAsync = require('../utils/catchAsync');
 const User = require("../models/userModel");
-const ProjectStatus = require("../models/projectStatusModel");
 const multer = require('multer')
 const path = require('path')
 
@@ -28,7 +27,14 @@ exports.createProject = catchAsync(async(req, res, next)=>{
 
 
 exports.getAllProject = catchAsync(async(req, res, next)=>{
-    const project  = await ProjectModel.findAll()
+    const project  = await ProjectModel.findAll({
+    include: [
+        {
+          model: User,
+          attributes: { exclude: ["updatedAt", "createdAt", "password"] },
+        },
+    ],
+});
     res.status(200).send(project)
 })
 

@@ -4,7 +4,7 @@ const projectController = require('../controller/projectController');
 
 router
     .route("/")
-    .post(projectController.createProject)
+    .post(projectController.upload,projectController.createProject)
     .get(projectController.getAllProject)
     
 router

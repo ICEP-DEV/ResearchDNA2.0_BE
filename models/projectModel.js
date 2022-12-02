@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/db');
+const User = require('./userModel');
 const Project = sequelize.define('project',{
     id:{
         type: Sequelize.INTEGER,
@@ -35,5 +36,9 @@ const Project = sequelize.define('project',{
 
     
 } );
+
+//FOREIGN KEY DECLARATIONS
+User.hasOne(Project, {onDelete: 'RESTRICT',foreignKey: 'userId'});
+Project.belongsTo(User);
 
 module.exports = Project;
