@@ -6,7 +6,7 @@ const cors = require('cors');
 const bodyparser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-//const fileupload = require('express-fileupload');
+const fileupload = require('express-fileupload');
 
 const app = express();
 
@@ -17,8 +17,11 @@ const feedbackRoute = require('./routes/feedbackRoute');
 const userRoute = require('./routes/userRoute');  
 const loginRoute = require('./routes/loginRoute');
 const toolsRoute = require('./routes/toolsRoute'); 
-const docToolsRoute = require('./routes/docToolsRoute');   
-const projectRoute = require('./routes/projectRoute');
+const docToolsRoute = require('./routes/docToolsRoute'); 
+const chatRoute = require('./routes/chatRoute');
+const chatGroupRoute = require('./routes/chatGroupRoute');
+const disciplineRoute = require('./routes/disciplineRoute');  
+const projectRoute = require('./routes/projectRoute');                    
 
 //3 APP.USE MIDDLEWARE
 app.use(express.json());
@@ -46,9 +49,12 @@ app.use('/api/user', userRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/tools', toolsRoute);
 app.use('/api/docTools', docToolsRoute);
+app.use('/api/chats', chatRoute);
+app.use('/api/chatGroups', chatGroupRoute);
+app.use('/api/discipline', disciplineRoute);
 app.use('/api/project', projectRoute);
 
-//static videos folder
+//static files folder
 app.use('/files',express.static('./files'))
 
 
