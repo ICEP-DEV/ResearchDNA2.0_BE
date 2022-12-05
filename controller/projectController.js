@@ -28,12 +28,7 @@ exports.createProject = catchAsync(async(req, res, next)=>{
 
 exports.getAllProject = catchAsync(async(req, res, next)=>{
     const project  = await ProjectModel.findAll({
-    include: [
-        {
-          model: User,
-          attributes: { exclude: ["updatedAt", "createdAt", "password"] },
-        },
-    ],
+   
 });
     res.status(200).send(project)
 })

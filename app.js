@@ -21,7 +21,8 @@ const docToolsRoute = require('./routes/docToolsRoute');
 const chatRoute = require('./routes/chatRoute');
 const chatGroupRoute = require('./routes/chatGroupRoute');
 const disciplineRoute = require('./routes/disciplineRoute');  
-const projectRoute = require('./routes/projectRoute');                    
+const projectRoute = require('./routes/projectRoute');
+const adminRoute = require('./routes/adminRoute');                    
 
 //3 APP.USE MIDDLEWARE
 app.use(express.json());
@@ -53,6 +54,7 @@ app.use('/api/chats', chatRoute);
 app.use('/api/chatGroups', chatGroupRoute);
 app.use('/api/discipline', disciplineRoute);
 app.use('/api/project', projectRoute);
+app.use('/api/admin', adminRoute);
 
 //static files folder
 app.use('/files',express.static('./files'))

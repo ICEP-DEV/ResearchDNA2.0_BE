@@ -2,7 +2,7 @@
 const UserModel = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 
-//CREATE Supervisor
+//CREATE USER
 exports.createUser = catchAsync(async(req, res, next)=>{
     const user = await UserModel.create(req.body);
     //INSERT INTO [tablename] VALUES...
@@ -37,6 +37,6 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
 
     const userId = req.params.userId
     const deleteUser = await UserModel.destroy({where: {userId: userId}})
-    res.status(200).send("Supervisor delete !")
+    res.status(200).send("USER delete !")
 
 })

@@ -12,12 +12,12 @@ const Project = sequelize.define('project',{
 
     text:{
         type: Sequelize.STRING,
-        allowNull: true,
+        
     },
     
     description:{
         type: Sequelize.STRING,
-        allowNull: true,
+        
     },
     
     startDate:{
@@ -30,7 +30,7 @@ const Project = sequelize.define('project',{
     },
     document:{
         type: Sequelize.STRING,
-        allowNull: true,
+        
     }
 
 
