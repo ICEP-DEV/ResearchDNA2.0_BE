@@ -1,9 +1,8 @@
 //CRUD - Create, Read, Update Delete
 const express = require('express');
 const LoginModel = require('../models/userModel');
-const Supervisor = require('../models/supervisorModel');
 const catchAsync = require('../utils/catchAsync');
-const { token } = require("morgan");
+//const { token } = require("morgan");
 //const jwt= require("jsonwebtoken")
 
 const router =express.Router();
@@ -16,9 +15,9 @@ exports.compareLogin = catchAsync(async (req, res, next) => {
 
     const {userId,password}=req.body;
 
-    const userWithId = await LoginModel.findOne({where: { userId}}).catch((err) =>{
+    const userWithId = await LoginModel.findOne({where: { userId},limit:1}).catch((err) =>{
         console.log("Error: ",err);
-    });
+    })
  
 
     if(!userWithId)
@@ -27,36 +26,24 @@ exports.compareLogin = catchAsync(async (req, res, next) => {
     if(userWithId.password !==password)
     return res.json({message: "Student number or password does not match!"})
     else{
-        return res.json({message: "Login was succeful!"})
-       
-    }
-
-    
-});
-
-//Supervisor
-
-
-exports.login = catchAsync(async (req, res, next) => {
-
-    const {supervisorId,password}=req.body;
-
-    const userWithId = await Supervisor.findOne({where: { supervisorId}}).catch((err) =>{
-        console.log("Error: ",err);
-    });
-    
-
-    if(!userWithId)
-    return res.json({message: "Supervisor number or password does not match!"})
+        if(req.body.userId == userWithId.userId && req.body.password == userWithId.password){
+            session=req.session;
+            session.userId=req.body.userId;
+            console.log(req.session)
+            res.send(`Hey there, welcome to Research`);
  
-    if(userWithId.password !==password)
-    return res.json({message: "Supervisor number or password does not match!"})
-    else{
-        return res.json({message: "Login was succeful!"})
-       
-    }
-
-    
-});
+         }
+          else{
+           res.send('Invalid Student number or password');
+         }
+     
+ }
+ 
+ 
+ });
+ 
+ exports.getlogin = catchAsync(async(req, res, next)=>{
+  const loginData  = await LoginModel.findAll()
+ });
 
 
